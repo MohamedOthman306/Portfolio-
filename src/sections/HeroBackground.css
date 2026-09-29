@@ -1,0 +1,245 @@
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__bg::before {
+  content: '';
+  position: absolute;
+  inset: -1%;
+  pointer-events: none;
+  background: radial-gradient(75% 80% at 82% 44%, rgba(63, 193, 201, 0.055) 0%, rgba(245, 245, 245, 0) 72%);
+  opacity: 0.84;
+  animation: heroAmbientGlowDrift 28s ease-in-out infinite;
+}
+
+@keyframes heroAmbientGlowDrift {
+  0%,
+  100% {
+    transform: translate3d(-0.35%, 0, 0);
+    opacity: 0.82;
+  }
+  50% {
+    transform: translate3d(0.45%, 0.35%, 0);
+    opacity: 1;
+  }
+}
+
+.hero__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(54, 79, 107, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(54, 79, 107, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 45%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 45%, #000 30%, transparent 85%);
+}
+
+.hero__bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.72;
+}
+
+.hero__bg-line {
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0.56;
+  animation: heroBackgroundCurveDrift 26s ease-in-out infinite alternate;
+}
+
+.hero__bg-line--lower {
+  animation-duration: 30s;
+  animation-delay: -9s;
+}
+
+@keyframes heroBackgroundCurveDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.48;
+  }
+  50% {
+    transform: translate3d(2px, -3px, 0);
+    opacity: 0.62;
+  }
+}
+
+.hero__bg-point {
+  opacity: 0.36;
+}
+
+.hero.is-motion-visible .hero__bg-point {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: heroBackgroundPointDrift 12s ease-in-out infinite;
+}
+
+.hero.is-motion-visible .hero__bg-point--two {
+  animation-delay: -2s;
+}
+
+.hero.is-motion-visible .hero__bg-point--three {
+  animation-delay: -4s;
+}
+
+.hero.is-motion-visible .hero__bg-point--four {
+  animation-delay: -6s;
+}
+
+.hero.is-motion-visible .hero__bg-point--five {
+  animation-delay: -5s;
+}
+
+.hero.is-motion-visible .hero__bg-point--six {
+  animation-delay: -7s;
+}
+
+.hero.is-motion-visible .hero__bg-point--seven {
+  animation-delay: -9s;
+}
+
+.hero.is-motion-visible .hero__bg-point--eight {
+  animation-delay: -11s;
+}
+
+.hero.is-motion-visible .hero__bg-point--nine {
+  animation-delay: -3s;
+}
+
+.hero.is-motion-visible .hero__bg-point--ten {
+  animation-delay: -6s;
+}
+
+.hero.is-motion-visible .hero__bg-point--eleven {
+  animation-delay: -10s;
+}
+
+@keyframes heroBackgroundPointDrift {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.28;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 0.5;
+  }
+}
+
+.hero__bg-bar {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: heroBackgroundBarRise 900ms cubic-bezier(0.16, 1, 0.3, 1) var(--bar-delay, 0s) forwards;
+}
+
+.hero__bg-bar--one { --bar-delay: 80ms; }
+.hero__bg-bar--two { --bar-delay: 150ms; }
+.hero__bg-bar--three { --bar-delay: 220ms; }
+.hero__bg-bar--four { --bar-delay: 290ms; }
+.hero__bg-bar--five { --bar-delay: 360ms; }
+
+@keyframes heroBackgroundBarRise {
+  to {
+    transform: scaleY(1);
+    opacity: 0.46;
+  }
+}
+
+.hero__bg-sparkline {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: heroBackgroundSparklineDraw 1.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+}
+
+@keyframes heroBackgroundSparklineDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hero__bg-sparkline-end {
+  opacity: 0;
+  animation: heroBackgroundSparklineEnd 180ms ease-out 1.85s forwards;
+}
+
+@keyframes heroBackgroundSparklineEnd {
+  to { opacity: 0.8; }
+}
+
+@media (max-width: 1024px) {
+  .hero__bg-svg {
+    opacity: 0.34;
+  }
+
+  .hero__bg-line--upper,
+  .hero__bg-point--one,
+  .hero__bg-point--two,
+  .hero__bg-point--three,
+  .hero__bg-point--nine,
+  .hero__bg-point--ten,
+  .hero__bg-point--eleven {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__bg-chart {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero__bg-svg {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__bg::before {
+    animation: none !important;
+    transform: none !important;
+    opacity: 0.84;
+  }
+
+  .hero__bg-line {
+    animation: none !important;
+    stroke-dashoffset: 0;
+    opacity: 0.4;
+    transform: none !important;
+  }
+
+  .hero__bg-point {
+    animation: none !important;
+    transform: none !important;
+    opacity: 0.38;
+  }
+
+  .hero__bg-bar {
+    animation: none !important;
+    transform: none !important;
+    opacity: 0.46;
+  }
+
+  .hero__bg-sparkline {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
+
+  .hero__bg-sparkline-end {
+    animation: none !important;
+    opacity: 0.8;
+  }
+}

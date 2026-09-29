@@ -1,0 +1,736 @@
+/* ==========================================================================
+   PHASE 04 — ANALYTICAL WORKFLOW SECTION (4 STAGES: DATA → DIRECTION)
+   Palette Tokens:
+   --primary: #364F6B (Navy)
+   --primary-dark: #1F2D3D (Deep Navy)
+   --secondary: #3FC1C9 (Vibrant Cyan / Teal)
+   --highlight: #FC5185 (Rose / Coral)
+   ========================================================================== */
+
+.process {
+  background: var(--light-bg);
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+/* ---- Architectural Frame Container ---- */
+.process__frame {
+  position: relative;
+  background: #ffffff;
+  border-radius: 28px;
+  border: 1px solid rgba(54, 79, 107, 0.1);
+  box-shadow:
+    0 4px 16px -4px rgba(54, 79, 107, 0.04),
+    0 24px 64px -16px rgba(54, 79, 107, 0.08);
+  padding: 4.5rem 4.5rem 4rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.process__frame:hover {
+  box-shadow:
+    0 6px 20px -4px rgba(54, 79, 107, 0.05),
+    0 32px 72px -16px rgba(54, 79, 107, 0.11);
+}
+
+/* Refined top architectural gradient accent line */
+.process__frame-accent {
+  position: absolute;
+  top: 0;
+  left: 4.5rem;
+  width: 90px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary), var(--highlight));
+  border-radius: 0 0 2px 2px;
+}
+
+/* ==========================================================================
+   SECTION HEADER
+   ========================================================================== */
+
+.process__header {
+  margin-bottom: 2.25rem;
+}
+
+.process__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(63, 193, 201, 0.1);
+  border: 1px solid rgba(63, 193, 201, 0.28);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--primary-dark);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.process.is-motion-visible .process__eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--secondary);
+  animation: workflowDotPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes workflowDotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(63, 193, 201, 0.8);
+  }
+}
+
+.process__headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--primary-dark);
+  margin-bottom: 0.85rem;
+  max-width: 680px;
+}
+
+.process__subhead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   WORKFLOW CANVAS & SIGNATURE SVG DATA FLOW
+   ========================================================================== */
+
+.workflow {
+  position: relative;
+  margin-top: 2.75rem;
+}
+
+/* Desktop Connecting SVG Rail (4 Stages) */
+.workflow__rail-container {
+  position: relative;
+  width: 100%;
+  height: 36px;
+  margin-bottom: 0.75rem;
+  overflow: visible;
+}
+
+.workflow__rail-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Animated continuous stream line */
+.process.is-motion-visible .workflow__rail-stream {
+  stroke-dasharray: 120 630;
+  animation: workflowStreamGlide 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@keyframes workflowStreamGlide {
+  0% {
+    stroke-dashoffset: 750;
+    opacity: 0.3;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.95;
+  }
+  95%, 100% {
+    stroke-dashoffset: -100;
+    opacity: 0.2;
+  }
+}
+
+/* Traveling SVG Data Signal Packet (4 Stages: 125 -> 375 -> 625 -> 875) */
+.process.is-motion-visible .workflow__signal-packet {
+  animation: workflowSignalGlide 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transform-origin: center;
+}
+
+@keyframes workflowSignalGlide {
+  0% {
+    transform: translateX(125px);
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  /* Pause at Stage 1 (Data) */
+  0%, 12% {
+    transform: translateX(125px);
+  }
+  /* Move to Stage 2 (Structure) */
+  24%, 37% {
+    transform: translateX(375px);
+  }
+  /* Move to Stage 3 (Insight) */
+  49%, 62% {
+    transform: translateX(625px);
+  }
+  /* Arrive at Stage 4 — Direction Payoff */
+  74%, 93% {
+    transform: translateX(875px);
+    opacity: 1;
+  }
+  97%, 100% {
+    transform: translateX(875px);
+    opacity: 0;
+  }
+}
+
+.process.is-motion-visible .workflow__signal-halo {
+  animation: signalHaloPulse 2s ease-in-out infinite;
+  transform-box: view-box;
+  transform-origin: 0px 18px;
+}
+
+@keyframes signalHaloPulse {
+  0%, 100% {
+    transform: scale(0.89);
+    opacity: 0.2;
+  }
+  50% {
+    transform: scale(1.33);
+    opacity: 0.45;
+  }
+}
+
+/* Mobile Vertical SVG Rail (Hidden on Desktop) */
+.workflow__mobile-rail-container {
+  display: none;
+}
+
+/* ==========================================================================
+   4 ANALYTICAL STAGES GRID
+   ========================================================================== */
+
+.workflow__track {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  gap: 1.35rem;
+  position: relative;
+}
+
+/* Stage Card */
+.workflow__stage {
+  min-width: 0;
+  background: rgba(248, 250, 252, 0.85);
+  border: 1px solid rgba(54, 79, 107, 0.1);
+  border-radius: 20px;
+  padding: 1.75rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(54, 79, 107, 0.03);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    opacity 0.3s ease,
+    filter 0.3s ease;
+}
+
+/* Reveal each stage once when that card enters the viewport. */
+.workflow__stage.is-scroll-revealed {
+  animation: workflowStageReveal 650ms var(--ease-out-expo) both;
+  animation-delay: var(--stage-reveal-delay, 0ms);
+}
+
+@keyframes workflowStageReveal {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* Top pin and number */
+.workflow__stage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.95rem;
+}
+
+.workflow__stage-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+  background: #ffffff;
+  border: 1px solid rgba(54, 79, 107, 0.14);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  box-shadow: 0 1px 4px rgba(54, 79, 107, 0.04);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.workflow__stage-num {
+  letter-spacing: 0.06em;
+}
+
+.workflow__stage-status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--stage-accent);
+  transition: transform 0.3s ease;
+}
+
+.workflow__stage-key {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Graphic Canvas inside card */
+.workflow__stage-canvas {
+  background: #ffffff;
+  border: 1px solid rgba(54, 79, 107, 0.07);
+  border-radius: 14px;
+  padding: 0.75rem 0.6rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(54, 79, 107, 0.02);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.workflow__graphic-svg {
+  width: 100%;
+  height: auto;
+  max-height: 90px;
+  display: block;
+}
+
+.process.is-motion-visible .workflow__graphic-pulse {
+  animation: outlierPulse 2s ease-in-out infinite;
+  transform-box: view-box;
+  transform-origin: 90px 24px;
+}
+
+@keyframes outlierPulse {
+  0%, 100% {
+    transform: scale(0.83);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.33);
+    opacity: 0.8;
+  }
+}
+
+/* Stage Text Content */
+.workflow__stage-body {
+  margin-bottom: 1.25rem;
+}
+
+.workflow__stage-title {
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 0.5rem;
+  line-height: 1.25;
+  transition: color 0.3s ease;
+}
+
+.workflow__stage-desc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+/* Analytical Micro-Tag */
+.workflow__stage-footer {
+  margin-top: auto;
+  padding-top: 0.95rem;
+  border-top: 1px solid rgba(54, 79, 107, 0.08);
+}
+
+.workflow__stage-tag {
+  font-size: 0.72rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.015em;
+  display: block;
+  line-height: 1.45;
+  transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   STAGE 04 — DIRECTION (SIGNATURE PAYOFF STAGE)
+   ========================================================================== */
+
+.workflow__stage--payoff {
+  background: rgba(254, 248, 250, 0.85);
+  border-color: rgba(252, 81, 133, 0.22);
+}
+
+.workflow__stage--payoff .workflow__stage-node {
+  background: rgba(252, 81, 133, 0.08);
+  border-color: rgba(252, 81, 133, 0.28);
+  color: var(--highlight-dark);
+}
+
+.workflow__stage--payoff .workflow__stage-key {
+  color: var(--highlight-dark);
+  font-weight: 700;
+}
+
+.workflow__stage--payoff .workflow__stage-canvas {
+  background: #ffffff;
+  border-color: rgba(252, 81, 133, 0.16);
+}
+
+.process.is-motion-visible .workflow__payoff-ring {
+  animation: payoffRingPulse 2.2s ease-in-out infinite;
+  transform-box: view-box;
+  transform-origin: 180px 24px;
+}
+
+@keyframes payoffRingPulse {
+  0%, 100% {
+    transform: scale(0.82);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.75;
+  }
+}
+
+/* ==========================================================================
+   INTERACTION: HOVER & FOCUS FOCUS-MODE
+   ========================================================================== */
+
+/* Dim sibling stages when track contains hovered or focused stage */
+.workflow__track:has(.workflow__stage:hover) .workflow__stage:not(:hover),
+.workflow__track:has(.workflow__stage:focus-visible) .workflow__stage:not(:focus-visible) {
+  opacity: 0.45 !important;
+  filter: saturate(0.8) !important;
+}
+
+.workflow__stage:hover,
+.workflow__stage:focus-visible,
+.workflow__stage--active {
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    opacity 0.3s ease,
+    filter 0.3s ease;
+  opacity: 1 !important;
+  filter: none !important;
+  transform: translateY(-5px) !important;
+  background: #ffffff !important;
+  border-color: rgba(63, 193, 201, 0.45) !important;
+  box-shadow:
+    0 12px 32px -8px rgba(54, 79, 107, 0.12),
+    0 4px 12px -2px rgba(63, 193, 201, 0.16) !important;
+  z-index: 5;
+}
+
+.workflow__stage:hover .workflow__stage-title,
+.workflow__stage:focus-visible .workflow__stage-title {
+  color: var(--primary-dark);
+}
+
+.workflow__stage:hover .workflow__stage-desc,
+.workflow__stage:focus-visible .workflow__stage-desc {
+  color: var(--text-primary);
+}
+
+.workflow__stage:hover .workflow__stage-canvas,
+.workflow__stage:focus-visible .workflow__stage-canvas {
+  border-color: rgba(63, 193, 201, 0.3);
+  transform: scale(1.02);
+}
+
+.workflow__stage:hover .workflow__stage-tag,
+.workflow__stage:focus-visible .workflow__stage-tag {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Payoff stage hover/focus */
+.workflow__stage--payoff:hover,
+.workflow__stage--payoff:focus-visible {
+  border-color: rgba(252, 81, 133, 0.55) !important;
+  box-shadow:
+    0 14px 36px -8px rgba(252, 81, 133, 0.24),
+    0 4px 14px -2px rgba(252, 81, 133, 0.18) !important;
+}
+
+.workflow__stage--payoff:hover .workflow__stage-canvas,
+.workflow__stage--payoff:focus-visible .workflow__stage-canvas {
+  border-color: rgba(252, 81, 133, 0.35);
+}
+
+.workflow__stage:focus-visible {
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+}
+
+.workflow__stage--payoff:focus-visible {
+  outline-color: var(--highlight);
+}
+
+/* ========================================================================== 
+   RESPONSIVE DESIGN BREAKPOINTS
+   ========================================================================== */
+
+/* Laptop / Compact Desktop (1024px – 1200px) */
+@media (max-width: 1200px) {
+  .process__frame {
+    padding: 3.75rem 3.25rem 3.5rem;
+  }
+
+  .workflow__track {
+    gap: 1rem;
+  }
+
+  .workflow__stage {
+    padding: 1.4rem 1.15rem;
+  }
+
+  .workflow__stage-title {
+    font-size: 1.18rem;
+  }
+
+  .workflow__stage-desc {
+    font-size: 0.85rem;
+  }
+
+  .workflow__stage-tag {
+    font-size: 0.7rem;
+  }
+}
+
+/* Tablet (≤ 880px: Switch to Connected Vertical Flow) */
+@media (max-width: 880px) {
+  .process {
+    padding: 5rem 0;
+  }
+
+  .process__frame {
+    padding: 3rem 2.25rem;
+    border-radius: 24px;
+  }
+
+  .process__frame-accent {
+    left: 2.25rem;
+    width: 65px;
+  }
+
+  /* Hide Desktop Horizontal Rail */
+  .workflow__rail-container {
+    display: none;
+  }
+
+  /* Show Mobile/Tablet Vertical Connecting Rail */
+  .workflow__mobile-rail-container {
+    display: block;
+    position: absolute;
+    top: 3.5rem;
+    bottom: 5.5rem;
+    left: 1.35rem;
+    width: 28px;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .workflow__mobile-rail-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .process.is-motion-visible .workflow__mobile-stream {
+    stroke-dasharray: 80 500;
+    animation: workflowMobileStreamGlide 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  }
+
+  @keyframes workflowMobileStreamGlide {
+    0% {
+      stroke-dashoffset: 600;
+      opacity: 0.3;
+    }
+    10% {
+      opacity: 0.9;
+    }
+    85% {
+      opacity: 0.95;
+    }
+    95%, 100% {
+      stroke-dashoffset: -100;
+      opacity: 0.2;
+    }
+  }
+
+  .process.is-motion-visible .workflow__mobile-signal-packet {
+    animation: workflowMobileSignalGlide 9s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  }
+
+  @keyframes workflowMobileSignalGlide {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    3% {
+      opacity: 1;
+    }
+    0%, 12% {
+      transform: translateY(20px);
+    }
+    24%, 37% {
+      transform: translateY(210px);
+    }
+    49%, 62% {
+      transform: translateY(400px);
+    }
+    74%, 93% {
+      transform: translateY(590px);
+      opacity: 1;
+    }
+    97%, 100% {
+      transform: translateY(590px);
+      opacity: 0;
+    }
+  }
+
+  /* Vertical Flow for Stages */
+  .workflow__track {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    gap: 1.35rem;
+    padding-left: 2.75rem;
+    position: relative;
+  }
+
+  .workflow__stage {
+    padding: 1.6rem 1.4rem;
+  }
+
+  .workflow__stage-canvas {
+    max-width: 260px;
+  }
+
+}
+
+/* Mobile Screen (≤ 640px) */
+@media (max-width: 640px) {
+  .process {
+    padding: 3.75rem 0;
+  }
+
+  .process__frame {
+    padding: 2.25rem 1.35rem;
+    border-radius: 20px;
+  }
+
+  .process__frame-accent {
+    left: 1.35rem;
+    width: 48px;
+  }
+
+  .process__headline {
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+
+  .process__subhead {
+    font-size: 0.96rem;
+  }
+
+  .workflow {
+    margin-top: 2.25rem;
+  }
+
+  .workflow__mobile-rail-container {
+    left: 0.65rem;
+  }
+
+  .workflow__track {
+    padding-left: 1.85rem;
+    gap: 1.15rem;
+  }
+
+  .workflow__stage {
+    padding: 1.35rem 1.1rem;
+    border-radius: 16px;
+  }
+
+  .workflow__stage-title {
+    font-size: 1.18rem;
+  }
+
+  .workflow__stage-canvas {
+    max-width: 100%;
+  }
+
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: PREFERS REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .process__eyebrow-dot,
+  .workflow__rail-stream,
+  .workflow__signal-packet,
+  .workflow__signal-halo,
+  .workflow__mobile-stream,
+  .workflow__mobile-signal-packet,
+  .workflow__graphic-pulse,
+  .workflow__payoff-ring {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .workflow__stage {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .workflow__stage.is-scroll-revealed {
+    animation: none !important;
+  }
+}
