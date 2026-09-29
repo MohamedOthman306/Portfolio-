@@ -217,21 +217,19 @@
 }
 
 /* ========================================================================== 
-   MY VISION — ONE CONNECTED ANALYTICAL TRANSFORMATION
+   MY VISION — ANALYTICAL PRINCIPLES
    ========================================================================== */
 
 .about__vision {
-  margin-top: 3.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(54, 79, 107, 0.12);
+  margin-top: 1.5rem;
+  padding: 1.25rem 0;
 }
 
 .about__vision-heading {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.45rem;
 }
 
 .about__vision-kicker {
@@ -241,143 +239,56 @@
   letter-spacing: 0.14em;
 }
 
-.about__vision-chain {
-  --vision-node-size: 1.15rem;
-  --vision-node-top: 0.35rem;
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.5rem;
+.about__vision-statement {
+  max-width: 54rem;
+  margin: 0;
+  color: var(--primary-dark);
+  font-family: 'Geist', var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.625rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+}
+
+.about__vision-principles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1.5rem;
+  margin: 0.85rem 0 0;
   padding: 0;
   list-style: none;
 }
 
-/* The line joins the nodes; the moving signal represents evidence moving forward. */
-.about__vision-chain::before,
-.about.is-motion-visible .about__vision-chain::after {
-  content: '';
-  position: absolute;
-  z-index: 0;
-  top: calc(var(--vision-node-top) + var(--vision-node-size) / 2 - 1px);
-  left: calc(var(--vision-node-size) / 2);
-  right: 22.5%;
-  height: 2px;
-  pointer-events: none;
-}
-
-.about__vision-chain::before {
-  background: linear-gradient(90deg, rgba(63, 193, 201, 0.3), rgba(54, 79, 107, 0.28) 72%, rgba(252, 81, 133, 0.55));
-}
-
-.about__vision-chain::after {
-  transform: scaleX(0);
-  transform-origin: left center;
-  background: linear-gradient(90deg, transparent, var(--secondary), var(--highlight));
-  animation: about-flow 4.8s var(--ease-out-quart) infinite;
-}
-
-.about__vision-step {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-rows: auto auto auto 1fr;
-  justify-items: start;
-  gap: 0.5rem;
+.about__vision-principle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   min-width: 0;
-  padding: 0 0.5rem 0 0;
 }
 
-.about__vision-node {
-  display: grid;
-  place-items: center;
-  width: var(--vision-node-size);
-  height: var(--vision-node-size);
-  margin-bottom: 0.45rem;
-  border: 1px solid rgba(63, 193, 201, 0.6);
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 0 0 5px #fff;
-  transition: transform 0.3s var(--ease-out-expo), border-color 0.3s ease;
-}
-
-.about__vision-node span {
-  width: 0.38rem;
-  height: 0.38rem;
+.about__vision-principle::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  flex: 0 0 5px;
   border-radius: 50%;
   background: var(--secondary);
-  opacity: 0.7;
-  transition: transform 0.3s var(--ease-out-expo), opacity 0.3s ease;
 }
 
-.about__vision-step:nth-child(2) .about__vision-node,
-.about__vision-step:nth-child(3) .about__vision-node {
-  transform: scale(1.12);
-  border-color: rgba(63, 193, 201, 0.8);
-}
-
-.about__vision-step:nth-child(3) .about__vision-node span {
-  transform: scale(1.3);
-  opacity: 0.85;
-}
-
-.about__vision-step-num {
-  color: var(--secondary-dark);
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-}
-
-.about__vision-step-title {
+.about__vision-principle-title {
+  margin: 0;
   font-family: 'Geist', var(--font-display);
   color: var(--primary-dark);
-  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  font-size: 0.9rem;
   font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: 0.005em;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
 }
 
-.about__vision-step-desc {
-  max-width: 15rem;
-  color: var(--text-secondary);
-  font-size: 0.98rem;
-  line-height: 1.55;
-}
-
-.about__vision-step--target .about__vision-node {
-  width: 1.45rem;
-  height: 1.45rem;
-  margin-top: -0.15rem;
-  margin-bottom: 0.3rem;
-  border: 2px solid var(--highlight);
-  box-shadow: 0 0 0 5px #fff, 0 0 0 8px rgba(252, 81, 133, 0.13);
-}
-
-.about__vision-step--target .about__vision-node span {
-  width: 0.62rem;
-  height: 0.62rem;
-  background: var(--highlight);
-  opacity: 1;
-}
-
-.about__vision-step--target .about__vision-step-num,
-.about__vision-step--target .about__vision-step-title {
-  color: var(--highlight-dark);
-}
-
-@keyframes about-flow {
-  0% { transform: scaleX(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { transform: scaleX(1); opacity: 1; }
-  100% { transform: scaleX(1); opacity: 0; }
-}
-
-/* ==========================================================================
+/* ========================================================================== 
    RESPONSIVE BREAKPOINTS
    ========================================================================== */
-
-@media (max-width: 1100px) {
-  .about__vision-chain { gap: 1rem; }
-}
 
 @media (max-width: 1024px) {
   .about__frame {
@@ -426,82 +337,9 @@
   }
 
   .about__vision {
-    margin-top: 2.75rem;
-    padding-top: 1.75rem;
+    margin-top: 1.25rem;
+    padding-block: 1rem;
   }
-
-  .about__vision-chain {
-    display: flex;
-    flex-direction: column;
-    gap: 1.35rem;
-    padding: 0.2rem 0;
-  }
-
-  .about__vision-chain::before,
-  .about.is-motion-visible .about__vision-chain::after {
-    top: 0.85rem;
-    bottom: 0.85rem;
-    left: 0.55rem;
-    right: auto;
-    width: 2px;
-    height: auto;
-  }
-
-  .about__vision-chain::before {
-    background: linear-gradient(180deg, rgba(63, 193, 201, 0.35), rgba(54, 79, 107, 0.28) 72%, rgba(252, 81, 133, 0.55));
-  }
-
-  .about__vision-chain::after {
-    transform: scaleY(0);
-    transform-origin: center top;
-    background: linear-gradient(180deg, transparent, var(--secondary), var(--highlight));
-    animation-name: about-flow-vertical;
-  }
-
-  .about__vision-step {
-    display: grid;
-    grid-template-columns: 2.35rem 1fr;
-    grid-template-rows: auto auto;
-    column-gap: 0.5rem;
-    row-gap: 0.2rem;
-    align-items: baseline;
-    padding: 0;
-  }
-
-  .about__vision-node {
-    position: absolute;
-    top: 0.1rem;
-    left: 0;
-    margin: 0;
-  }
-
-  .about__vision-step-num {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .about__vision-step-title {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .about__vision-step-desc {
-    grid-column: 2;
-    grid-row: 3;
-    max-width: 34rem;
-  }
-
-  .about__vision-step--target .about__vision-node {
-    top: -0.05rem;
-    margin: 0;
-  }
-}
-
-@keyframes about-flow-vertical {
-  0% { transform: scaleY(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { transform: scaleY(1); opacity: 1; }
-  100% { transform: scaleY(1); opacity: 0; }
 }
 
 @media (max-width: 640px) {
@@ -549,31 +387,24 @@
   }
 
   .about__vision {
-    margin-top: 2.25rem;
-    padding-top: 1.75rem;
+    margin-top: 1rem;
+    padding-block: 0.65rem;
   }
 
-  .about__vision-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.35rem;
-    margin-bottom: 1.5rem;
+  .about__vision-statement {
+    font-size: 1.25rem;
   }
-
 }
 
-/* ==========================================================================
-   ACCESSIBILITY: PREFERS REDUCED MOTION
-   ========================================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  .about__vision-chain::after {
-    animation: none !important;
-    display: none;
+@media (max-width: 599px) {
+  .about__vision-principles {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    margin-top: 0.65rem;
   }
 
-  .about__vision-node,
-  .about__vision-node span {
-    transition: none !important;
+  .about__vision-principle-title {
+    font-size: 0.95rem;
   }
 }

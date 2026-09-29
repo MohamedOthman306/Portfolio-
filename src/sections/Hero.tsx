@@ -28,14 +28,8 @@ export default function Hero() {
 
           {/* Main Display Headline (Calibrated Editorial Scale) */}
           <h1 className="hero__title hero__animate hero__animate--2">
-            <span className="hero__title-primary">Turning Complex Data</span>
-            <span className="hero__title-accent">Into Strategic Direction.</span>
+            <span className="hero__title-primary">I turn business data into <span className="hero__title-accent">clear insights</span> that help teams understand performance, identify problems, and make better decisions.</span>
           </h1>
-
-          {/* Lead Proposition Subtitle */}
-          <p className="hero__subtitle text-lg hero__animate hero__animate--3">
-            Data Analyst using SQL, Python, and Power BI to explore patterns, investigate what drives them, and turn findings into clear next steps.
-          </p>
 
           {/* Actions & Verified Profiles */}
           <div className="hero__actions hero__animate hero__animate--4">
@@ -76,7 +70,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   className="hero__social-link"
                   title="LinkedIn: Mohamed Othman"
-                  aria-label="LinkedIn profile of Mohamed Ahmed (opens in new tab)"
+                  aria-label={`LinkedIn profile of ${PROFILE.name} (opens in new tab)`}
                   data-cursor="cta"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -93,7 +87,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   className="hero__social-link"
                   title="GitHub: MohamedOthman306"
-                  aria-label="GitHub profile of Mohamed Ahmed (opens in new tab)"
+                  aria-label={`GitHub profile of ${PROFILE.name} (opens in new tab)`}
                   data-cursor="cta"
                 >
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

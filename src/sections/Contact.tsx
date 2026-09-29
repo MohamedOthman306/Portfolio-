@@ -167,7 +167,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="contact__footer-link"
                   title="LinkedIn: Mohamed Othman"
-                  aria-label="Visit Mohamed Ahmed's LinkedIn profile in new tab"
+                  aria-label={`Visit ${PROFILE.name}'s LinkedIn profile in new tab`}
                 >
                   LinkedIn
                 </a>
@@ -179,7 +179,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="contact__footer-link"
                   title="GitHub: MohamedOthman306"
-                  aria-label="Visit Mohamed Ahmed's GitHub profile in new tab"
+                  aria-label={`Visit ${PROFILE.name}'s GitHub profile in new tab`}
                 >
                   GitHub
                 </a>

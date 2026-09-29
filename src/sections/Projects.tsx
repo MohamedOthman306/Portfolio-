@@ -10,10 +10,10 @@ export default function Projects() {
       <div className="container">
         <span className="section-label reveal-item" style={{ color: 'var(--mint)' }}>Case Studies</span>
         <h2 className="display-md reveal-item" style={{ color: 'white', marginBottom: '1rem', maxWidth: 600 }}>
-          Real problems. Real data. Real impact.
+          Selected analysis projects.
         </h2>
         <p className="text-lg reveal-item" style={{ color: 'rgba(255,255,255,0.72)', marginBottom: '3.5rem', maxWidth: 600 }}>
-          Each project follows a structured analytical process: Problem → Data → Process → Insights → Result.
+          Each project outlines a problem area, the data involved, and an analytical approach.
         </p>
 
         {/* Featured Project */}
@@ -50,21 +50,11 @@ function FeaturedProject({ project }: { project: Project }) {
           <p className="projects__featured-problem">{project.problem}</p>
 
           <div className="projects__featured-insights">
-            {project.insights.map((insight, i) => (
-              <div key={i} className="projects__insight">
-                <span className="projects__insight-dot" style={{ background: project.color }} />
-                <span>{insight}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Results */}
-          {project.results && (
-            <div className="projects__featured-results">
-              <span className="projects__results-label font-mono">Results & Impact</span>
-              <p>{project.results}</p>
+            <div className="projects__insight">
+              <span className="projects__insight-dot" style={{ background: project.color }} />
+              <span>{project.analysis}</span>
             </div>
-          )}
+          </div>
 
           <div className="projects__featured-tools">
             {project.tools.map((tool) => (
@@ -73,7 +63,7 @@ function FeaturedProject({ project }: { project: Project }) {
           </div>
 
           {/* Action CTAs */}
-          <div className="projects__featured-links">
+          {(project.github || project.liveUrl) && <div className="projects__featured-links">
             {project.github && (
               <a href={project.github} target="_blank" rel="noopener noreferrer" className="projects__link" data-cursor="cta" aria-label={`View ${project.title} source code on GitHub`}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -90,7 +80,7 @@ function FeaturedProject({ project }: { project: Project }) {
                 <span>Live Dashboard</span>
               </a>
             )}
-          </div>
+          </div>}
         </div>
 
         <div className="projects__featured-visual">
@@ -99,7 +89,7 @@ function FeaturedProject({ project }: { project: Project }) {
           </div>
           <div className="projects__layer projects__layer--charts">
             <div className="projects__dash-chart">
-              <div className="projects__dash-chart-title font-mono">Monthly Trend</div>
+              <div className="projects__dash-chart-title font-mono">Illustrative Chart</div>
               <svg viewBox="0 0 200 80" className="projects__dash-svg">
                 <defs>
                   <linearGradient id="featGrad" x1="0" y1="0" x2="0" y2="1">
@@ -112,17 +102,10 @@ function FeaturedProject({ project }: { project: Project }) {
               </svg>
             </div>
           </div>
-          <div className="projects__layer projects__layer--kpis">
-            <div className="projects__dash-kpi">
-              <span className="projects__dash-kpi-label font-mono">{project.metrics.label}</span>
-              <span className="projects__dash-kpi-value">{project.metrics.value}</span>
-              <span className="projects__dash-kpi-change" style={{ color: project.color }}>{project.metrics.change}</span>
-            </div>
-          </div>
           <div className="projects__layer projects__layer--insight">
             <div className="projects__dash-callout">
               <span className="projects__dash-callout-icon">◉</span>
-              <span className="projects__dash-callout-text font-mono">Key Insight Detected</span>
+              <span className="projects__dash-callout-text font-mono">Design Preview</span>
             </div>
           </div>
         </div>
@@ -148,11 +131,6 @@ function ProjectCard({
         <h3 className="projects__card-title">{project.title}</h3>
         <p className="projects__card-problem">{project.problem}</p>
 
-        <div className="projects__card-metric" style={{ marginBottom: '1.25rem' }}>
-          <span className="projects__card-metric-value">{project.metrics.value}</span>
-          <span className="projects__card-metric-label">{project.metrics.label}</span>
-        </div>
-
         {/* Dataset source */}
         <div style={{ marginBottom: '1rem', fontSize: '0.82rem', color: 'rgba(255,255,255,0.75)' }}>
           <span className="font-mono" style={{ color: 'var(--blue-light)', fontSize: '0.72rem', display: 'block', marginBottom: '0.2rem', textTransform: 'uppercase' }}>
@@ -161,17 +139,12 @@ function ProjectCard({
           {project.dataset}
         </div>
 
-        {/* Key Insights Preview */}
+        {/* Analysis focus */}
         <div style={{ marginBottom: '1.25rem' }}>
           <span className="font-mono" style={{ color: 'var(--mint)', fontSize: '0.72rem', display: 'block', marginBottom: '0.4rem', textTransform: 'uppercase' }}>
-            Key Insights:
+            Analysis focus:
           </span>
-          {project.insights.slice(0, 2).map((ins, i) => (
-            <div key={i} className="projects__insight" style={{ marginBottom: '0.4rem' }}>
-              <span className="projects__insight-dot" style={{ background: project.color }} />
-              <span style={{ fontSize: '0.82rem' }}>{ins}</span>
-            </div>
-          ))}
+          <p className="projects__card-problem">{project.analysis}</p>
         </div>
 
         {/* Tools */}
@@ -182,7 +155,7 @@ function ProjectCard({
         </div>
 
         {/* Action Buttons */}
-        <div className="projects__card-links">
+        {(project.github || project.liveUrl) && <div className="projects__card-links">
           {project.github && (
             <a href={project.github} target="_blank" rel="noopener noreferrer" className="projects__link" data-cursor="cta" aria-label={`View ${project.title} source code on GitHub`}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -199,18 +172,7 @@ function ProjectCard({
               <span>Live</span>
             </a>
           )}
-        </div>
-      </div>
-
-      {/* Mini bar visualization */}
-      <div className="projects__card-bars" aria-hidden="true">
-        {[0.6, 0.85, 0.45, 0.75, 0.55, 0.9, 0.4].map((h, i) => (
-          <div key={i} className="projects__card-bar" style={{
-            height: `${h * 100}%`,
-            background: project.color,
-            opacity: 0.15 + i * 0.05,
-          }} />
-        ))}
+        </div>}
       </div>
     </div>
   );

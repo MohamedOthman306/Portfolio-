@@ -145,6 +145,11 @@ export default function Navigation() {
   return (
     <nav ref={navRef} className={`nav ${scrolled ? 'nav--scrolled' : ''}`} role="navigation" aria-label="Main navigation">
       <div className="nav__inner">
+        <a className="nav__brand" href="#hero" aria-label={`${PROFILE.name} — home`}>
+          <span className="nav__brand-first">{PROFILE.firstName}</span>
+          <span className="nav__brand-last">{PROFILE.lastName}</span>
+        </a>
+
         <div className={`nav__center ${mobileOpen ? 'nav__center--open' : ''}`}>
           <div ref={linksContainerRef} className="nav__links">
             {/* Smooth Sliding Active Pill Indicator */}

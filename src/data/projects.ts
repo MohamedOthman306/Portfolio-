@@ -35,11 +35,7 @@ export interface Project {
   dataset: string;
   analysis: string;
   process: string[];
-  insights: string[];
-  recommendation: string;
-  results: string;
   tools: string[];
-  metrics: { label: string; value: string; change: string };
   featured?: boolean;
   color: string;
   github?: string;
@@ -53,126 +49,81 @@ export const PROJECTS: Project[] = [
     title: "Customer Churn Prediction",
     category: "Predictive Analytics",
     problem:
-      "A telecom company was losing 26% of customers annually, costing $4.2M in revenue. Leadership needed to identify at-risk customers before they churned.",
+      "Explore customer behavior and service patterns associated with churn.",
     dataset:
-      "18 months of customer data: 45K records with usage patterns, billing history, support tickets, and demographic data.",
+      "Customer usage, billing, support, and demographic data.",
     analysis:
-      "Built a multi-variable analysis combining RFM scoring with behavioral patterns. Identified 7 key churn indicators through correlation analysis and cohort segmentation.",
+      "Explore retention patterns with cohort segmentation, behavior comparisons, and correlation analysis.",
     process: [
-      "Cleaned and merged 5 data sources (CRM, billing, support tickets, usage logs, demographics)",
+      "Prepared customer usage, billing, support, and demographic data",
       "Performed EDA to identify distributions, outliers, and missing value patterns",
-      "Built RFM scoring model and behavioral cohort segmentation",
-      "Applied correlation analysis to isolate top churn predictors",
-      "Designed Power BI early-warning dashboard with automated flagging",
+      "Compared retention patterns across customer groups",
+      "Explored associations between customer behavior and churn",
+      "Outlined a Power BI dashboard concept for reviewing retention patterns",
     ],
-    insights: [
-      "Customers with 3+ support tickets in 30 days had 4.8x higher churn probability",
-      "Price sensitivity was the #1 factor only for customers in their first 6 months",
-      "Usage decline of >40% over 2 months predicted churn with 89% accuracy",
-    ],
-    recommendation:
-      "Implemented an early-warning dashboard that flags at-risk customers 45 days before likely churn, enabling targeted retention campaigns.",
-    results:
-      "Reduced annual churn rate from 26% to 17%, recovering an estimated $1.4M in at-risk revenue. Retention campaigns reached 92% of flagged customers within 48 hours.",
     tools: ["Python", "SQL", "Power BI", "Pandas", "Scikit-learn"],
-    metrics: { label: "Churn Reduction", value: "34%", change: "-34%" },
     featured: true,
     color: "#3FC1C9",
-    github: "https://github.com/yourprofile/customer-churn-analysis",
   },
   {
     id: "sales-performance",
     title: "Sales Performance Dashboard",
     category: "Business Intelligence",
     problem:
-      "Regional sales teams lacked visibility into real-time performance metrics, resulting in delayed decision-making and missed quarterly targets.",
+      "Explore sales performance by time, product, and region to support clearer reporting.",
     dataset:
-      "2 years of transactional data: 120K+ orders, 800 products, 12 regions, integrated with CRM data.",
+      "Order-level sales records with product, region, and CRM context.",
     analysis:
-      "Designed an interactive Power BI dashboard with drill-through capabilities. Created DAX measures for YoY growth, moving averages, and forecast vs. actual comparisons.",
+      "Structure sales measures and dashboard views for time, product, and regional comparisons.",
     process: [
-      "Extracted and consolidated data from SQL Server and CRM exports",
+      "Prepared sales and CRM data for analysis",
       "Designed star schema data model with fact and dimension tables",
-      "Built 15+ DAX measures including YoY growth, rolling averages, and forecast variance",
-      "Created drill-through pages for regional and product-level analysis",
-      "Deployed self-service analytics portal with scheduled data refresh",
+      "Created DAX measures for growth, rolling averages, and forecast comparisons",
+      "Designed views for regional and product-level exploration",
+      "Planned report refresh and self-service access",
     ],
-    insights: [
-      "Top 15% of products drove 68% of total revenue",
-      "Tuesday-Thursday showed 40% higher conversion rates",
-      "Northeast region outperformed by 23% due to bundling strategy",
-    ],
-    recommendation:
-      "Rolled out a self-service analytics platform enabling regional managers to make data-driven decisions in real-time.",
-    results:
-      "Enabled real-time decision-making across 12 regions. Q1 post-launch saw 18% revenue growth. Reduced weekly reporting time from 8 hours to 15 minutes.",
     tools: ["Power BI", "SQL Server", "DAX", "Excel", "Python"],
-    metrics: { label: "Revenue Growth", value: "+18%", change: "+18%" },
     color: "#364F6B",
-    github: "https://github.com/yourprofile/sales-dashboard",
-    liveUrl: "#",
   },
   {
     id: "supply-chain",
     title: "Supply Chain Optimization",
     category: "Operations Analytics",
     problem:
-      "Warehouse operations faced 12% stockout rate and 23% overstock on key SKUs, impacting both revenue and storage costs.",
+      "Explore inventory availability and demand patterns across products and suppliers.",
     dataset:
-      "3 years of inventory data: purchase orders, supplier lead times, seasonal demand patterns, and warehouse capacity metrics.",
+      "Inventory, purchase order, supplier lead-time, shipment, and demand data.",
     analysis:
-      "Applied time-series decomposition to identify seasonal patterns. Built an ABC-XYZ matrix to classify inventory by value and demand variability.",
+      "Review demand patterns and inventory variability using time-series and ABC-XYZ analysis.",
     process: [
-      "Aggregated 3 years of PO, inventory, and shipment data from ERP system",
+      "Prepared purchase order, inventory, and shipment data",
       "Performed time-series decomposition (trend, seasonality, residual)",
-      "Built ABC-XYZ classification matrix for 800+ SKUs",
+      "Built an ABC-XYZ classification matrix for inventory items",
       "Calculated dynamic safety stock levels using lead time variability",
-      "Created Tableau monitoring dashboard with reorder alerts",
+      "Outlined a Tableau dashboard for inventory monitoring",
     ],
-    insights: [
-      "67% of stockouts occurred in just 8% of SKUs",
-      "Supplier lead time variability was 3x higher than estimated",
-      "Seasonal demand shifts were predictable 6 weeks in advance",
-    ],
-    recommendation:
-      "Redesigned reorder points using dynamic safety stock calculations, reducing carrying costs while improving fill rates.",
-    results:
-      "Reduced stockout rate from 12% to 4%. Cut overstock by 28%, saving $1.2M annually in carrying costs. Improved order fill rate to 97%.",
     tools: ["Python", "SQL", "Tableau", "Excel", "Statsmodels"],
-    metrics: { label: "Cost Savings", value: "$1.2M", change: "-28%" },
     color: "#48688c",
-    github: "https://github.com/yourprofile/supply-chain-optimization",
   },
   {
     id: "marketing-attribution",
     title: "Marketing Attribution Analysis",
     category: "Marketing Analytics",
     problem:
-      "Marketing team couldn't determine which channels drove actual conversions, leading to inefficient budget allocation across 8 channels.",
+      "Explore how marketing channels contribute to customer journeys and conversions.",
     dataset:
-      "12 months of multi-touch attribution data: 250K customer journeys, ad spend across channels, and conversion events.",
+      "Marketing touchpoint, advertising spend, and conversion event data.",
     analysis:
-      "Implemented multi-touch attribution modeling comparing first-touch, last-touch, and data-driven models. Analyzed customer journey paths and channel interactions.",
+      "Compare first-touch, last-touch, and data-driven attribution approaches across customer journeys.",
     process: [
-      "Collected and unified touchpoint data from 8 marketing channels",
-      "Mapped 250K customer journeys from first touch to conversion",
+      "Prepared touchpoint data across marketing channels",
+      "Mapped customer journeys from first touch to conversion",
       "Built and compared first-touch, last-touch, and data-driven attribution models",
       "Performed ROI analysis by channel using each attribution model",
-      "Created channel performance dashboard with budget optimization recommendations",
+      "Outlined channel performance views for budget analysis",
     ],
-    insights: [
-      "Social media influenced 45% of conversions but received only 12% of budget",
-      "Email remarketing had the highest ROI at 8.4x",
-      "Average conversion path involved 4.2 touchpoints across 3 channels",
-    ],
-    recommendation:
-      "Reallocated 30% of budget based on data-driven attribution, projected to improve ROAS by 2.1x.",
-    results:
-      "Budget reallocation improved overall ROAS by 2.1x. Social media conversions increased 67% after budget adjustment. Reduced cost per acquisition by 31%.",
     tools: ["Python", "Google Analytics", "SQL", "Pandas", "Matplotlib"],
-    metrics: { label: "ROAS Improvement", value: "2.1x", change: "+110%" },
     color: "#2fa1a8",
-    github: "https://github.com/yourprofile/marketing-attribution",
   },
 ];
 
@@ -314,7 +265,7 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     startDate: "2019",
     endDate: "2024",
     description:
-      "Studied computer science, information technology, programming, databases, software engineering, data analysis, and statistics, building a strong foundation for working with data and solving technical problems.",
+      "Studied computer science, information technology, programming, databases, software engineering, data science, and statistics, building a strong foundation for working with data and solving technical problems.",
     highlights: [
       "**GPA:** 3.02 / 4.00 (Very Good)",
       "Relevant Coursework: Data Analysis · Statistics · Databases · Programming · Software Engineering",
@@ -344,14 +295,14 @@ export const EXPERIENCE_DATA: ExperienceItem[] = [
     organization: "Digital Egypt Pioneers Initiative (DEPI)",
     location: "Online",
     startDate: "July 2026",
-    endDate: "December 2026",
+    endDate: "Present",
     description:
       "Intensive practical training covering the end-to-end data analysis workflow, from data preparation and exploration to visualization and business insights.",
     highlights: [
-      "Worked with Python for data cleaning, exploratory analysis, feature engineering, and feature scaling.",
-      "Applied SQL for data extraction, transformation, joins, subqueries, CTEs, and advanced analytical queries.",
-      "Built dashboards and reports using Power BI, Tableau, Excel, and Power Query.",
-      "Practiced statistical analysis and translated data findings into clear business insights.",
+      "Use Python for data cleaning, exploratory analysis, feature engineering, and feature scaling.",
+      "Apply SQL for data extraction, transformation, joins, subqueries, CTEs, and analytical queries.",
+      "Build dashboards and reports using Power BI, Tableau, Excel, and Power Query.",
+      "Practice statistical analysis and translate data findings into clear business insights.",
     ],
   },
 ];

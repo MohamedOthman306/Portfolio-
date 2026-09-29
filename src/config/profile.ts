@@ -4,13 +4,13 @@
 // ======================================
 
 export const PROFILE = {
-  name: "Mohamed Ahmed",
+  name: "Mohamed Othman",
   firstName: "Mohamed",
-  lastName: "Ahmed",
+  lastName: "Othman",
   role: "Data Analyst",
-  tagline: "Turning Data Into Decisions",
+  tagline: "Business Data to Clear Insights",
   description:
-    "I don't just analyze data. I find what the numbers are trying to say.",
+    "I turn business data into clear insights that help teams understand performance, identify problems, and make better decisions.",
   email: "mohamed.othman3065@gmail.com",
   linkedin: "https://www.linkedin.com/in/mohamed-othman24",
   github: "https://github.com/MohamedOthman306",

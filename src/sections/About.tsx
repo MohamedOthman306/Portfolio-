@@ -1,8 +1,9 @@
 import './About.css';
+import { PROFILE } from '../config/profile';
 
 export default function About() {
   return (
-    <section id="about" className="about section" data-motion-section>
+    <section id="about" className="about section">
       <div className="container">
         <div className="about__frame reveal-item">
           {/* Subtle architectural accent line */}
@@ -23,7 +24,7 @@ export default function About() {
 
               <div className="about__story">
                 <p className="about__paragraph">
-                  I’m Mohamed Ahmed, a Data Analyst who enjoys going beyond the numbers to understand what they actually mean. I believe data becomes valuable when it answers the right question, reveals the patterns behind a business problem, and turns uncertainty into something people can act on.
+                  I’m {PROFILE.name}, a Data Analyst who enjoys going beyond the numbers to understand what they actually mean. I believe data becomes valuable when it answers the right question, reveals the patterns behind a business problem, and turns uncertainty into something people can act on.
                 </p>
                 <p className="about__paragraph">
                   My approach is simple: understand the problem first, explore the data with curiosity, and translate the findings into clear insights that create real business value. I’m driven by the process of turning messy, ambiguous questions into meaningful direction — not simply producing another report or dashboard.
@@ -48,19 +49,9 @@ export default function About() {
 
                 <div className="about__photo-container">
                   <picture>
-                    <source
-                      type="image/avif"
-                      srcSet="/images/about-320w.avif 320w, /images/about-480w.avif 480w, /images/about-640w.avif 640w, /images/about-800w.avif 800w"
-                      sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 380px"
-                    />
-                    <source
-                      type="image/webp"
-                      srcSet="/images/about-320w.webp 320w, /images/about-480w.webp 480w, /images/about-640w.webp 640w, /images/about-800w.webp 800w"
-                      sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 380px"
-                    />
                     <img
-                      src="/images/about.png"
-                      alt="Mohamed Ahmed — Data Analyst"
+                      src="/images/stand.png"
+                      alt={`${PROFILE.name} — Data Analyst`}
                       className="about__photo-img"
                       loading="lazy"
                       decoding="async"
@@ -74,38 +65,26 @@ export default function About() {
             </div>
           </div>
 
-          {/* One connected transformation path */}
-          <div className="about__vision">
+          <div className="about__vision" aria-labelledby="about-vision-title">
             <div className="about__vision-heading">
-              <span className="about__vision-kicker font-mono">MY VISION</span>
+              <span id="about-vision-title" className="about__vision-kicker font-mono">MY VISION</span>
             </div>
 
-            <ol className="about__vision-chain" aria-label="My analytical process, from data to action">
-              <li className="about__vision-step">
-                <span className="about__vision-node" aria-hidden="true"><span /></span>
-                <span className="about__vision-step-num font-mono">01</span>
-                <h3 className="about__vision-step-title">DATA</h3>
-                <p className="about__vision-step-desc">Understand the real business question.</p>
+            <p className="about__vision-statement">
+              I want my analysis to be clear, dependable, and useful.
+            </p>
+
+            <ul className="about__vision-principles" aria-label="Principles that guide my analysis">
+              <li className="about__vision-principle">
+                <h3 className="about__vision-principle-title">CLEAR THINKING</h3>
               </li>
-              <li className="about__vision-step">
-                <span className="about__vision-node" aria-hidden="true"><span /></span>
-                <span className="about__vision-step-num font-mono">02</span>
-                <h3 className="about__vision-step-title">UNDERSTANDING</h3>
-                <p className="about__vision-step-desc">Find patterns, relationships, and drivers.</p>
+              <li className="about__vision-principle">
+                <h3 className="about__vision-principle-title">TRUSTWORTHY ANALYSIS</h3>
               </li>
-              <li className="about__vision-step">
-                <span className="about__vision-node" aria-hidden="true"><span /></span>
-                <span className="about__vision-step-num font-mono">03</span>
-                <h3 className="about__vision-step-title">INSIGHT</h3>
-                <p className="about__vision-step-desc">Turn evidence into meaningful explanation.</p>
+              <li className="about__vision-principle">
+                <h3 className="about__vision-principle-title">PRACTICAL DECISIONS</h3>
               </li>
-              <li className="about__vision-step about__vision-step--target">
-                <span className="about__vision-node" aria-hidden="true"><span /></span>
-                <span className="about__vision-step-num font-mono">04</span>
-                <h3 className="about__vision-step-title">ACTION</h3>
-                <p className="about__vision-step-desc">Create value through better decisions.</p>
-              </li>
-            </ol>
+            </ul>
           </div>
         </div>
       </div>
